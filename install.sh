@@ -48,7 +48,7 @@ n
 p
 
 
-+4G
++1G
 t
 2
 82
@@ -94,7 +94,7 @@ mount ${IDEV}1 /mnt/gentoo/boot || exit 1
 
 cd /mnt/gentoo || exit 1
 #cleanup in case of previous try...
-[ -f *.bz2 ] && rm *.bz2
+#[ -f *.bz2 ] && rm *.bz2
 FILE=$(wget -q http://distfiles.gentoo.org/releases/amd64/current-stage3/ -O - | grep -o -e "stage3-amd64-\w*.tar.bz2" | uniq)
 [ -z "$FILE" ] && exit 1
 #download latest stage file.
@@ -337,7 +337,7 @@ sleep 5 || bash
 
 # fix problem with apcupsd...
 [ -d /run/lock ] || mkdir /run/lock
-emerge -uv -j4 net-snmp squid vsftpd subversion php openvpn apcupsd iotop iftop dd-rescue tcpdump nmap netkit-telnetd dmidecode hdparm parted || bash
+emerge -uv -j4 net-snmp git subversion openvpn apcupsd iotop iftop dd-rescue tcpdump nmap netkit-telnetd dmidecode hdparm parted || bash
 #todo if local ups... rc-update add apcupsd.powerfail shutdown
 #todo configure snmp and add to startup
 
